@@ -1,0 +1,206 @@
+$grayish-blue: hsl(237, 18%, 59%);
+$soft-red: hsl(345, 95%, 68%);
+
+$white: hsl(0, 0%, 100%);
+$dark-desaturated-blue: hsl(236, 21%, 26%);
+$very-dark-blue: hsl(235, 16%, 14%);
+$very-dark-blue-2: hsl(234, 17%, 12%);
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    font-family: 'Red Hat Text', sans-serif;
+    font-size: 14px;
+}
+
+body{
+    background-color: $very-dark-blue-2;
+    background-image: url('../images/bg-stars.svg');
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-image: url('../images/pattern-hills.svg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+
+    padding: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+
+    position: relative;
+}
+
+.introduction{
+    font-weight: 700;
+    font-size: 1rem;
+    flex-wrap: wrap;
+    letter-spacing: .5rem;
+    color: $white;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.countdown-container{
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 10rem;
+
+    .time-container{
+        width: 100%;
+        padding: 1.2rem;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+
+        .time {
+            position: relative;
+            color: hsl(345, 95%, 68%);
+            position: relative;
+            height: 10rem;
+            width: 10.5rem;
+            background-color: hsl(235, 20%, 25%);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 5.5em;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            line-height: calc(10rem - 2px);
+            box-shadow: 0px 8px 0px 0px #16151d;
+
+            span{
+                font-size: 4rem;
+            }
+        }
+        
+        .time::before, .time::after {
+            content: '';
+            position: absolute;
+            z-index: 6;
+            top: calc(50% - 5px);
+            background: hsl(240, 12%, 16%);
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+        
+        .time::before {
+            left: -5px;
+        }
+        
+        .time::after {
+            right: -5px;
+        }
+        
+        
+        .time > span {
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+        
+        .top {
+            z-index: 3;
+            background-color: hsl(240, 21%, 21%);
+            transform-origin: 50% 100%;
+            transform: perspective(200px);
+        }
+        
+        .time .top::after, .time .bottom-back::after {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            border-bottom: 1px solid hsl(240, 12%, 16%);
+        }
+        
+        .bottom {
+            z-index: 1;
+        }
+        
+        .bottom::before {
+            content: '';
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: hsl(235, 20%, 25%);
+        }
+        
+        .bottom-back {
+            z-index: 2;
+            top: 0;
+            height: 50%;
+            overflow: hidden;
+            background-color: hsl(235, 20%, 25%);
+        }
+        
+        .bottom-back span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        .top, .top-back {
+            height: 50%;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+        
+        .top-back {
+            z-index: 4;
+            bottom: 0;
+            transform-origin: 50% 0;
+            background-color: hsl(235, 20%, 25%);
+            transform: perspective(200px) rotateX(180deg);
+        }
+        
+        .top-back span {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .desc{
+            color: $grayish-blue;
+            text-transform: uppercase;
+            font-size: .7rem;
+            letter-spacing: .4rem;
+        }
+    }
+    
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    position: absolute;
+    bottom: 5rem;
+
+    .logo, path:hover{
+        fill: $soft-red;
+        cursor: pointer;
+    }
+}
